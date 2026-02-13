@@ -16,31 +16,31 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f8f9fc;
-color:#222;
+background:#fdf6f9;
+color:#444;
 }
 
-/* HEADER DOURADO */
+/* HEADER PASTEL COM DOURADO SUAVE */
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 60px;
-background:linear-gradient(90deg,#d4af37,#b8962e);
-box-shadow:0 4px 20px rgba(0,0,0,0.08);
+background:linear-gradient(90deg,#f8d7e6,#f3e5d8);
+box-shadow:0 6px 25px rgba(0,0,0,0.05);
 position:sticky;
 top:0;
 z-index:100;
 }
 
-/* LOGO DESTACADA */
+/* LOGO OFICIAL DESTACADA */
 .logo{
-font-size:24px;
+font-size:26px;
 font-weight:700;
-background:linear-gradient(90deg,#ffffff,#fff3c4);
+background:linear-gradient(90deg,#c6a75e,#e6c77b);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-letter-spacing:1px;
+letter-spacing:2px;
 }
 
 /* MENU */
@@ -51,14 +51,14 @@ gap:25px;
 
 nav a{
 text-decoration:none;
-color:white;
+color:#6a5d52;
 font-weight:500;
 cursor:pointer;
 transition:0.3s;
 }
 
 nav a:hover{
-color:#2c2c2c;
+color:#c6a75e;
 }
 
 /* HERO */
@@ -69,10 +69,11 @@ padding:50px 60px 30px 60px;
 .hero h1{
 font-size:28px;
 margin-bottom:10px;
+color:#7a6c60;
 }
 
 .hero p{
-color:#666;
+color:#8f8175;
 }
 
 /* BUSCA */
@@ -82,30 +83,32 @@ margin-top:20px;
 
 .search input{
 width:320px;
-padding:10px 15px;
-border-radius:25px;
-border:1px solid #ddd;
+padding:12px 18px;
+border-radius:30px;
+border:1px solid #eee;
+background:#fff;
 outline:none;
+box-shadow:0 4px 15px rgba(0,0,0,0.03);
 }
 
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+gap:30px;
 padding:30px 60px;
 }
 
 .card{
 background:white;
-border-radius:18px;
+border-radius:20px;
 overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 }
 
 .card img{
@@ -115,23 +118,25 @@ object-fit:cover;
 }
 
 .card-content{
-padding:18px;
+padding:20px;
 }
 
 .card-content h3{
 font-size:18px;
 margin-bottom:5px;
+color:#5f5349;
 }
 
 .price{
 font-weight:600;
 margin:6px 0;
+color:#c6a75e;
 }
 
 .size{
 font-size:13px;
-color:#777;
-margin-bottom:10px;
+color:#999;
+margin-bottom:12px;
 }
 
 .actions{
@@ -141,28 +146,29 @@ justify-content:space-between;
 
 .btn{
 border:none;
-padding:7px 12px;
-border-radius:25px;
+padding:8px 14px;
+border-radius:30px;
 cursor:pointer;
 font-size:13px;
 transition:0.3s;
 }
 
+/* BOTÕES PASTEL */
 .fav{
-background:#ff4757;
-color:white;
+background:#f8c8dc;
+color:#7a4c60;
 }
 
 .contact{
-background:#25D366;
-color:white;
+background:#c8f5da;
+color:#1f7a4d;
 }
 
 .store-btn{
-background:#d4af37;
+background:#e6c77b;
 color:white;
 width:100%;
-margin-top:10px;
+margin-top:12px;
 }
 
 .section{
@@ -177,8 +183,9 @@ footer{
 text-align:center;
 padding:25px;
 margin-top:40px;
-background:#111;
-color:white;
+background:#f3e5d8;
+color:#7a6c60;
+font-size:14px;
 }
 </style>
 </head>
@@ -266,7 +273,6 @@ document.getElementById(id).classList.add('active');
 if(id==="favorites") loadFav();
 }
 
-/* DESTAQUES */
 const highlight=document.getElementById("highlight");
 data.forEach(store=>{
 store.products.forEach(prod=>{
@@ -274,7 +280,6 @@ highlight.innerHTML+=card(prod,store);
 });
 });
 
-/* LOJAS */
 const storeList=document.getElementById("storeList");
 data.forEach((store,index)=>{
 storeList.innerHTML+=`
@@ -288,7 +293,6 @@ storeList.innerHTML+=`
 `;
 });
 
-/* ABRIR LOJA */
 function openStore(index){
 showSection("storeProfile");
 document.getElementById("storeName").innerText=data[index].name;
@@ -299,7 +303,6 @@ container.innerHTML+=card(prod,data[index]);
 });
 }
 
-/* CARD */
 function card(prod,store){
 return `
 <div class="card">
@@ -317,7 +320,6 @@ return `
 `;
 }
 
-/* FAVORITOS */
 function save(prod){
 let fav=JSON.parse(localStorage.getItem("fav"))||[];
 fav.push(prod);
