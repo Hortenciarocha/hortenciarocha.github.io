@@ -3,270 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ModaVitrine 2.0</title>
-
+<title>ModaVitrine PRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-    background:#f4f6fb;
+display:flex;
+background:#f4f6fb;
 }
 
-/* HEADER */
-header{
-    background:linear-gradient(90deg,#8e2de2,#ff6a88);
-    padding:20px 40px;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* MENU LATERAL */
+.sidebar{
+width:220px;
+background:linear-gradient(180deg,#8e2de2,#ff6a88);
+color:white;
+height:100vh;
+padding:20px;
+position:fixed;
 }
 
-header h1{
-    font-size:24px;
+.sidebar h2{
+margin-bottom:30px;
 }
 
-header nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
-    font-weight:500;
+.sidebar a{
+display:block;
+margin-bottom:15px;
+cursor:pointer;
+text-decoration:none;
+color:white;
+font-weight:500;
 }
 
-/* HERO */
-.hero{
-    text-align:center;
-    padding:50px 20px;
+/* CONTEÚDO */
+.main{
+margin-left:220px;
+padding:30px;
+width:100%;
 }
 
-.hero h2{
-    font-size:32px;
-    margin-bottom:10px;
-}
+.section{display:none;}
+.active{display:block;}
 
-.hero p{
-    color:#555;
-    margin-bottom:20px;
-}
+h1{margin-bottom:20px;}
 
 /* BUSCA */
-.search-bar{
-    display:flex;
-    justify-content:center;
-    margin-bottom:20px;
+.search{
+margin-bottom:20px;
 }
 
-.search-bar input{
-    width:300px;
-    padding:10px;
-    border-radius:20px 0 0 20px;
-    border:1px solid #ccc;
-    outline:none;
+.search input{
+padding:10px;
+width:250px;
+border-radius:20px;
+border:1px solid #ccc;
 }
 
-.search-bar button{
-    padding:10px 20px;
-    border:none;
-    border-radius:0 20px 20px 0;
-    background:#8e2de2;
-    color:white;
-    cursor:pointer;
-}
-
-/* FILTROS */
-.filters{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-bottom:30px;
-    flex-wrap:wrap;
-}
-
-.filters select{
-    padding:8px;
-    border-radius:8px;
-    border:1px solid #ccc;
-}
-
-/* PRODUTOS */
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    padding:20px 40px;
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
 }
 
 .card{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-    transition:0.3s;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.3s;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-}
+.card:hover{transform:translateY(-5px);}
 
 .card img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
+width:100%;
+height:200px;
+object-fit:cover;
 }
 
-.card-content{
-    padding:15px;
-}
+.card-content{padding:15px;}
 
-.card-content h3{
-    font-size:18px;
-}
+.price{font-weight:600;margin:5px 0;}
 
-.card-content p{
-    font-size:14px;
-    color:#666;
-}
-
-.price{
-    font-weight:600;
-    margin:8px 0;
-}
+.small{font-size:13px;color:#555;}
 
 .actions{
-    display:flex;
-    justify-content:space-between;
-    margin-top:10px;
+display:flex;
+justify-content:space-between;
+margin-top:10px;
 }
 
-.favorite{
-    background:#ff4757;
-    border:none;
-    color:white;
-    padding:6px 10px;
-    border-radius:20px;
-    cursor:pointer;
+.btn{
+border:none;
+padding:6px 10px;
+border-radius:20px;
+cursor:pointer;
+font-size:12px;
 }
 
-.contact{
-    background:#25D366;
-    border:none;
-    color:white;
-    padding:6px 10px;
-    border-radius:20px;
-    cursor:pointer;
-}
+.fav{background:#ff4757;color:white;}
+.contact{background:#25D366;color:white;}
+.open-store{background:#8e2de2;color:white;}
 
-/* FOOTER */
-footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>👗 ModaVitrine</h1>
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Lojas</a>
-        <a href="#">Login</a>
-    </nav>
-</header>
+<div class="sidebar">
+<h2>👗 ModaVitrine</h2>
+<a onclick="showSection('home')">🏠 Início</a>
+<a onclick="showSection('stores')">🏬 Lojas</a>
+<a onclick="showSection('favorites')">❤️ Favoritos</a>
+</div>
 
-<section class="hero">
-    <h2>Conectando Lojas de Moda aos Clientes</h2>
-    <p>Explore vitrines online e entre em contato direto com a loja.</p>
+<div class="main">
 
-    <div class="search-bar">
-        <input type="text" placeholder="Buscar roupas ou lojas...">
-        <button>Buscar</button>
-    </div>
+<!-- HOME -->
+<div id="home" class="section active">
+<h1>Destaques da Cidade ✨</h1>
+<div class="grid" id="highlight"></div>
+</div>
 
-    <div class="filters">
-        <select>
-            <option>Tamanho</option>
-            <option>P</option>
-            <option>M</option>
-            <option>G</option>
-        </select>
+<!-- LOJAS -->
+<div id="stores" class="section">
+<h1>Lojas Disponíveis</h1>
+<div class="grid" id="storeList"></div>
+</div>
 
-        <select>
-            <option>Categoria</option>
-            <option>Vestido</option>
-            <option>Blusa</option>
-            <option>Calça</option>
-        </select>
+<!-- PERFIL LOJA -->
+<div id="storeProfile" class="section">
+<button class="btn open-store" onclick="showSection('stores')">← Voltar</button>
+<h1 id="storeName"></h1>
+<div class="grid" id="storeProducts"></div>
+</div>
 
-        <select>
-            <option>Preço</option>
-            <option>Até R$100</option>
-            <option>R$100 - R$200</option>
-            <option>Acima de R$200</option>
-        </select>
-    </div>
-</section>
+<!-- FAVORITOS -->
+<div id="favorites" class="section">
+<h1>Peças Salvas ❤️</h1>
+<div class="grid" id="favList"></div>
+</div>
 
-<section class="products">
+</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="">
-        <div class="card-content">
-            <h3>Vestido Elegance</h3>
-            <p>Loja Bella Moda</p>
-            <div class="price">R$ 159,90</div>
-            <div class="actions">
-                <button class="favorite">❤️ Favoritar</button>
-                <button class="contact">📲 Contato</button>
-            </div>
-        </div>
-    </div>
+<script>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="">
-        <div class="card-content">
-            <h3>Blazer Chic</h3>
-            <p>Loja Estilo Urbano</p>
-            <div class="price">R$ 229,90</div>
-            <div class="actions">
-                <button class="favorite">❤️ Favoritar</button>
-                <button class="contact">📲 Contato</button>
-            </div>
-        </div>
-    </div>
+const data = [
+{
+name:"Bella Moda",
+whatsapp:"5599999999999",
+products:[
+{ id:1, name:"Vestido Elegance", price:"R$159,90", size:"P, M, G", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38"},
+{ id:2, name:"Blusa Charm", price:"R$89,90", size:"M, G", img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d"}
+]
+},
+{
+name:"Estilo Urbano",
+whatsapp:"5588888888888",
+products:[
+{ id:3, name:"Blazer Chic", price:"R$229,90", size:"M, G, GG", img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f"}
+]
+}
+];
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d" alt="">
-        <div class="card-content">
-            <h3>Calça Premium</h3>
-            <p>Loja Trend Fashion</p>
-            <div class="price">R$ 179,90</div>
-            <div class="actions">
-                <button class="favorite">❤️ Favoritar</button>
-                <button class="contact">📲 Contato</button>
-            </div>
-        </div>
-    </div>
+const highlight = document.getElementById("highlight");
+const storeList = document.getElementById("storeList");
+const storeProducts = document.getElementById("storeProducts");
+const favList = document.getElementById("favList");
 
-</section>
+/* SEÇÕES */
+function showSection(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+if(id==="favorites") loadFavorites();
+}
 
-<footer>
-    © 2026 ModaVitrine - Desenvolvido por Hortência 💻✨
-</footer>
+/* HOME - DESTAQUES */
+data.forEach(store=>{
+store.products.forEach(prod=>{
+highlight.innerHTML+=card(prod,store);
+});
+});
+
+/* LISTA LOJAS */
+data.forEach((store,index)=>{
+storeList.innerHTML+=`
+<div class="card">
+<div class="card-content">
+<h3>${store.name}</h3>
+<p class="small">Clique para ver as peças disponíveis</p>
+<button class="btn open-store" onclick="openStore(${index})">Ver Loja</button>
+</div>
+</div>
+`;
+});
+
+/* ABRIR LOJA */
+function openStore(index){
+showSection("storeProfile");
+document.getElementById("storeName").innerText=data[index].name;
+storeProducts.innerHTML="";
+data[index].products.forEach(prod=>{
+storeProducts.innerHTML+=card(prod,data[index]);
+});
+}
+
+/* CARD PRODUTO */
+function card(prod,store){
+return `
+<div class="card">
+<img src="${prod.img}">
+<div class="card-content">
+<h3>${prod.name}</h3>
+<div class="price">${prod.price}</div>
+<div class="small">Tamanhos: ${prod.size}</div>
+<div class="actions">
+<button class="btn fav" onclick='save(${JSON.stringify(prod)})'>❤️</button>
+<button class="btn contact" onclick="window.open('https://wa.me/${store.whatsapp}','_blank')">📲</button>
+</div>
+</div>
+</div>
+`;
+}
+
+/* SALVAR */
+function save(prod){
+let fav = JSON.parse(localStorage.getItem("fav"))||[];
+fav.push(prod);
+localStorage.setItem("fav",JSON.stringify(fav));
+alert("Peça salva ❤️");
+}
+
+/* CARREGAR FAVORITOS */
+function loadFavorites(){
+let fav = JSON.parse(localStorage.getItem("fav"))||[];
+favList.innerHTML="";
+fav.forEach(prod=>{
+favList.innerHTML+=`
+<div class="card">
+<img src="${prod.img}">
+<div class="card-content">
+<h3>${prod.name}</h3>
+<div class="price">${prod.price}</div>
+</div>
+</div>
+`;
+});
+}
+
+</script>
 
 </body>
 </html>
-
-
-
