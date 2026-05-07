@@ -1,372 +1,662 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ConectaModa</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
-padding:auto;
+padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Montserrat',sans-serif;
 }
 
 body{
-background:#f8f9fc;
+background:#f4f4f4;
 color:#222;
 }
 
 /* HEADER */
+
 header{
+background:white;
+padding:18px 60px;
+border-bottom:1px solid #ececec;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.top-header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0px 6px;
-background:white;
-box-shadow:0 2px 15px rgba(0,0,0,0.05);
-position:sticky;
-top:0;
-z-index:100;
+gap:20px;
 }
 
 .logo{
-font-size:22px;
-font-weight:700;
-background:linear-gradient(90deg,#8e2de2,#ff6a88);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-nav{
 display:flex;
-gap:25px;
+align-items:center;
+gap:12px;
 }
 
-nav a{
-text-decoration:none;
-color:#555;
-font-weight:500;
+.logo img{
+width:110px;
+}
+
+.logo-text h1{
+font-size:28px;
+font-weight:700;
+color:#111;
+}
+
+.logo-text p{
+font-size:13px;
+color:#777;
+letter-spacing:1px;
+}
+
+.search-area{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.search-box{
+display:flex;
+align-items:center;
+background:#f7f7f7;
+border:1px solid #ddd;
+border-radius:50px;
+overflow:hidden;
+}
+
+.search-box input{
+border:none;
+background:none;
+padding:14px 20px;
+width:280px;
+outline:none;
+font-size:14px;
+}
+
+.search-box button{
+border:none;
+background:#111;
+color:white;
+padding:14px 18px;
 cursor:pointer;
+}
+
+.login-btn{
+border:none;
+background:#111;
+color:white;
+padding:13px 22px;
+border-radius:50px;
+cursor:pointer;
+font-weight:600;
 transition:0.3s;
 }
 
-nav a:hover{
-color:#8e2de2;
+.login-btn:hover{
+background:#333;
+}
+
+/* MENU */
+
+.menu{
+display:flex;
+justify-content:center;
+gap:35px;
+padding-top:18px;
+margin-top:18px;
+border-top:1px solid #eee;
+flex-wrap:wrap;
+}
+
+.menu a{
+text-decoration:none;
+color:#444;
+font-size:14px;
+font-weight:500;
+transition:0.3s;
+position:relative;
+}
+
+.menu a:hover{
+color:#000;
+}
+
+.menu a::after{
+content:'';
+width:0%;
+height:2px;
+background:#111;
+position:absolute;
+left:0;
+bottom:-6px;
+transition:0.3s;
+}
+
+.menu a:hover::after{
+width:100%;
 }
 
 /* HERO */
+
 .hero{
-padding:50px 60px 20px 60px;
+height:85vh;
+background:
+linear-gradient(rgba(0,0,0,0.45),
+rgba(0,0,0,0.45)),
+url('https://images.unsplash.com/photo-1496747611176-843222e1e57c');
+
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding:0 80px;
 }
 
-.hero h1{
-font-size:28px;
-margin-bottom:10px;
+.hero-content{
+max-width:600px;
+color:white;
 }
 
-.hero p{
-color:#666;
+.hero-content span{
+font-size:14px;
+letter-spacing:3px;
+text-transform:uppercase;
 }
 
-.search{
-margin-top:20px;
+.hero-content h1{
+font-size:68px;
+line-height:1.1;
+margin:18px 0;
+font-weight:700;
 }
 
-.search input{
-width:320px;
-padding:10px 15px;
-border-radius:25px;
-border:1px solid #ddd;
-outline:none;
+.hero-content p{
+font-size:18px;
+line-height:1.7;
+color:#e8e8e8;
+margin-bottom:30px;
 }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-padding:30px 60px;
+.hero-buttons{
+display:flex;
+gap:15px;
 }
 
-.card{
-background:white;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
+.hero-buttons button{
+padding:15px 28px;
+border:none;
+cursor:pointer;
+font-weight:600;
+border-radius:50px;
 transition:0.3s;
 }
 
+.shop-btn{
+background:white;
+color:#111;
+}
+
+.shop-btn:hover{
+background:#ddd;
+}
+
+.explore-btn{
+background:transparent;
+color:white;
+border:1px solid white !important;
+}
+
+.explore-btn:hover{
+background:white;
+color:#111;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+padding:70px 60px 30px;
+}
+
+.section-title h2{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.section-title p{
+color:#777;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+padding:0 60px 70px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+transition:0.4s;
+}
+
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .card img{
 width:100%;
-height:220px;
+height:360px;
 object-fit:cover;
 }
 
 .card-content{
-padding:18px;
+padding:22px;
 }
 
 .card-content h3{
-font-size:18px;
-margin-bottom:5px;
+font-size:24px;
+margin-bottom:8px;
 }
 
-.store-name{
+.store{
 font-size:13px;
-color:#777;
-margin-bottom:6px;
+color:#888;
+margin-bottom:15px;
 }
 
 .price{
-font-weight:600;
-margin:6px 0;
+font-size:26px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.card-footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .size{
-font-size:13px;
-color:#777;
-margin-bottom:10px;
+font-size:14px;
+color:#666;
 }
 
-.actions{
-display:flex;
-justify-content:space-between;
-}
-
-.btn{
+.buy-btn{
 border:none;
-padding:7px 12px;
-border-radius:25px;
+background:#111;
+color:white;
+padding:10px 18px;
+border-radius:50px;
 cursor:pointer;
-font-size:13px;
 transition:0.3s;
 }
 
-.fav{
-background:#ff4757;
-color:white;
+.buy-btn:hover{
+background:#333;
 }
 
-.contact{
-background:#25D366;
-color:white;
-}
+/* NEWSLETTER */
 
-.store-btn{
-background:#8e2de2;
-color:white;
-margin-top:10px;
-}
-
-.section{
-display:none;
-}
-
-.active{
-display:block;
-}
-
-footer{
-text-align:center;
-padding:25px;
-margin-top:40px;
+.newsletter{
 background:#111;
 color:white;
+padding:80px 60px;
+text-align:center;
 }
+
+.newsletter h2{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.newsletter p{
+color:#ccc;
+margin-bottom:30px;
+}
+
+.newsletter-box{
+display:flex;
+justify-content:center;
+max-width:600px;
+margin:auto;
+overflow:hidden;
+border-radius:50px;
+background:white;
+}
+
+.newsletter-box input{
+flex:1;
+padding:18px;
+border:none;
+outline:none;
+font-size:15px;
+}
+
+.newsletter-box button{
+border:none;
+background:#111;
+color:white;
+padding:18px 30px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+background:#0a0a0a;
+color:#aaa;
+padding:30px;
+text-align:center;
+font-size:14px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+header{
+padding:20px;
+}
+
+.hero{
+padding:30px;
+height:auto;
+padding-top:120px;
+padding-bottom:120px;
+}
+
+.hero-content h1{
+font-size:42px;
+}
+
+.grid{
+padding:0 20px 50px;
+}
+
+.section-title{
+padding:50px 20px 30px;
+}
+
+.newsletter{
+padding:60px 20px;
+}
+
+.top-header{
+flex-direction:column;
+}
+
+.search-box input{
+width:180px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<img src="https://hortenciarocha.github.io/logo.png" alt="ConectaModa" width="200">
-<nav>
-<a onclick="showSection('home')">Início</a>
-<a onclick="showSection('stores')">Lojas</a>
-<a onclick="showSection('favorites')">Favoritos</a>
+
+<div class="top-header">
+
+<div class="logo">
+
+<img src="logo.png">
+
+<div class="logo-text">
+<h1>ConectaModa</h1>
+<p>MODA • ESTILO • TENDÊNCIA</p>
+</div>
+
+</div>
+
+<div class="search-area">
+
+<div class="search-box">
+<input type="text" placeholder="Buscar produtos...">
+<button>⌕</button>
+</div>
+
+<button class="login-btn">
+Entrar
+</button>
+
+</div>
+
+</div>
+
+<nav class="menu">
+
+<a href="#">Lançamentos</a>
+<a href="#">Vestidos</a>
+<a href="#">Fitness</a>
+<a href="#">Conjuntos</a>
+<a href="#">Masculino</a>
+<a href="#">Feminino</a>
+<a href="#">Acessórios</a>
+<a href="#">Favoritos</a>
+
 </nav>
 
 </header>
 
-<!-- HOME -->
-<div id="home" class="section active">
-<div class="hero">
-<div class="logo">ConectaModa</div>
-<h1>Destaques da Cidade</h1>
-<p>A vitrine digital que conecta você às melhores lojas da cidade.</p>
+<section class="hero">
 
-<div class="search">
-<input type="text" placeholder="Buscar peça ou loja...">
-</div>
-</div>
-<div class="grid" id="highlight"></div>
-</div>
+<div class="hero-content">
 
-<!-- LOJAS -->
-<div id="stores" class="section">
-<div class="hero">
-<h1>Lojas Disponíveis 🏬</h1>
-<p>Clique na loja para ver todas as peças.</p>
-</div>
-<div class="grid" id="storeList"></div>
-</div>
+<span>NOVA COLEÇÃO 2026</span>
 
-<!-- PERFIL LOJA -->
-<div id="storeProfile" class="section">
-<div class="hero">
-<h1 id="storeName"></h1>
-<button class="btn store-btn" onclick="showSection('stores')">← Voltar</button>
-</div>
-<div class="grid" id="storeProducts"></div>
+<h1>
+Moda elegante para quem quer se destacar
+</h1>
+
+<p>
+Descubra peças modernas, sofisticadas e conectadas às principais tendências da moda atual.
+</p>
+
+<div class="hero-buttons">
+
+<button class="shop-btn">
+Comprar Agora
+</button>
+
+<button class="explore-btn">
+Explorar
+</button>
+
 </div>
 
-<!-- FAVORITOS -->
-<div id="favorites" class="section">
-<div class="hero">
-<h1>Peças Salvas ❤️</h1>
 </div>
-<div class="grid" id="favList"></div>
+
+</section>
+
+<section class="section-title">
+
+<h2>Destaques da Semana</h2>
+
+<p>
+As peças mais procuradas da plataforma.
+</p>
+
+</section>
+
+<section class="grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+
+<div class="card-content">
+
+<h3>Blazer Premium</h3>
+
+<p class="store">
+Bella Moda
+</p>
+
+<div class="price">
+R$229,90
 </div>
+
+<div class="card-footer">
+
+<span class="size">
+P • M • G
+</span>
+
+<button class="buy-btn">
+Ver peça
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f">
+
+<div class="card-content">
+
+<h3>Vestido Elegance</h3>
+
+<p class="store">
+Lux Fashion
+</p>
+
+<div class="price">
+R$189,90
+</div>
+
+<div class="card-footer">
+
+<span class="size">
+P • M • G
+</span>
+
+<button class="buy-btn">
+Ver peça
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
+
+<div class="card-content">
+
+<h3>Conjunto Minimal</h3>
+
+<p class="store">
+Urban Style
+</p>
+
+<div class="price">
+R$149,90
+</div>
+
+<div class="card-footer">
+
+<span class="size">
+P • M • G
+</span>
+
+<button class="buy-btn">
+Ver peça
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1495385794356-15371f348c31">
+
+<div class="card-content">
+
+<h3>Fitness Black</h3>
+
+<p class="store">
+Power Fit
+</p>
+
+<div class="price">
+R$119,90
+</div>
+
+<div class="card-footer">
+
+<span class="size">
+P • M • G
+</span>
+
+<button class="buy-btn">
+Ver peça
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="newsletter">
+
+<h2>Receba novidades da moda</h2>
+
+<p>
+Cadastre seu e-mail para receber tendências, promoções e lançamentos exclusivos.
+</p>
+
+<div class="newsletter-box">
+
+<input type="email" placeholder="Digite seu e-mail">
+
+<button>
+Cadastrar
+</button>
+
+</div>
+
+</section>
 
 <footer>
-© 2026 ConectaModa - Desenvolvido por Hortência 
+
+© 2026 ConectaModa — Desenvolvido por Hortência Rocha
+
 </footer>
-
-<script>
-
-const data = [
-{
-name:"Bella Moda",
-whatsapp:"33 98411",
-products:[
-{ id:1, name:"Jaqueta Elegance", price:"R$159,90", size:"P, M, G", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38"},
-{ id:2, name:"Blusa Charm", price:"R$89,90", size:"M, G", img:"https://i.pinimg.com/736x/04/5d/63/045d637a7372835d9f2fcff9449e4969.jpg"},
-{ id:3, name:"Saia Fashion", price:"R$120,00", size:"P, M, G", img:"https://images.tcdn.com.br/img/img_prod/811247/saia_juvenil_de_prega_verde_militar_200163930_1_c4b318b22aa1a1e5516917bbd122cc39.png"},
-{ id:4, name:"Vestido Floral", price:"R$179,90", size:"P, M, G", img:"https://ruateresaonline.com.br/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/v/e/vestido-mangas-sino-estampa-tapecaria-verde_217072_600_2_1.jpg"},
-{ id:5, name:"Cropped Style", price:"R$69,90", size:"P, M", img:"https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/cactus/media/uploads/produtos/foto/masvpxdg/croppe-245103-e-calca-244403.jpg"}
-]
-},
-
-{
-name:"Estilo Urbano",
-whatsapp:"5588888888888",
-products:[
-{ id:6, name:"Blazer Chic", price:"R$229,90", size:"M, G, GG", img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f"},
-{ id:7, name:"Jaqueta Jeans", price:"R$199,90", size:"M, G", img:"https://cea.vtexassets.com/arquivos/ids/59215676-800-auto?v=638778394773300000&width=800&height=auto&aspect=true"},
-{ id:8, name:"Camiseta Street", price:"R$79,90", size:"P, M, G", img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrhntxau20boc1"},
-{ id:9, name:"Moletom Casual", price:"R$149,90", size:"M, G", img:"https://static.topper.com.br/produtos/blusa-moletom-topper-casual-masculina/06/D30-5792-006/D30-5792-006_zoom1.jpg?ts=1695442982&ims=544x"},
-{ id:10, name:"Calça Jeans Slim", price:"R$189,90", size:"38, 40, 42", img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246"}
-]
-}
-];
-
-function showSection(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-if(id==="favorites") loadFav();
-}
-
-/* GERAR CARDS */
-function card(prod,store){
-return `
-<div class="card">
-<img src="${prod.img}">
-<div class="card-content">
-<h3>${prod.name}</h3>
-<p class="store-name">Loja: ${store.name}</p>
-<div class="price">${prod.price}</div>
-<div class="size">Tamanhos: ${prod.size}</div>
-<div class="actions">
-<button class="btn fav" onclick='save(${JSON.stringify(prod)})'>❤️</button>
-<button class="btn contact" onclick="window.open('https://wa.me/${store.whatsapp}','_blank')">📲</button>
-</div>
-</div>
-</div>
-`;
-}
-
-/* DESTAQUES */
-const highlight=document.getElementById("highlight");
-data.forEach(store=>{
-store.products.forEach(prod=>{
-highlight.innerHTML+=card(prod,store);
-});
-});
-
-/* LOJAS */
-const storeList=document.getElementById("storeList");
-data.forEach((store,index)=>{
-storeList.innerHTML+=`
-<div class="card">
-<div class="card-content">
-<h3>${store.name}</h3>
-<p>Ver todas as peças disponíveis</p>
-<button class="btn store-btn" onclick="openStore(${index})">Abrir Loja</button>
-</div>
-</div>
-`;
-});
-
-/* ABRIR LOJA */
-function openStore(index){
-showSection("storeProfile");
-document.getElementById("storeName").innerText=data[index].name;
-const container=document.getElementById("storeProducts");
-container.innerHTML="";
-data[index].products.forEach(prod=>{
-container.innerHTML+=card(prod,data[index]);
-});
-}
-
-/* FAVORITOS */
-function save(prod){
-let fav=JSON.parse(localStorage.getItem("fav"))||[];
-
-if(!fav.find(p=>p.id===prod.id)){
-fav.push(prod);
-localStorage.setItem("fav",JSON.stringify(fav));
-alert("Peça salva ❤️");
-}else{
-alert("Essa peça já está nos favoritos 😉");
-}
-}
-
-function loadFav(){
-let fav=JSON.parse(localStorage.getItem("fav"))||[];
-const container=document.getElementById("favList");
-container.innerHTML="";
-
-fav.forEach((prod,index)=>{
-container.innerHTML+=`
-<div class="card">
-<img src="${prod.img}">
-<div class="card-content">
-<h3>${prod.name}</h3>
-<div class="price">${prod.price}</div>
-<button class="btn fav" onclick="removeFav(${index})">Remover</button>
-</div>
-</div>
-`;
-});
-}
-
-function removeFav(index){
-let fav=JSON.parse(localStorage.getItem("fav"))||[];
-fav.splice(index,1);
-localStorage.setItem("fav",JSON.stringify(fav));
-loadFav();
-}
-
-</script>
 
 </body>
 </html>
