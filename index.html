@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>ConectaModa</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
@@ -14,93 +19,150 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Montserrat',sans-serif;
+scroll-behavior:smooth;
+}
+
+:root{
+--primary:#d81b60;
+--secondary:#7b1fa2;
+--dark:#111111;
+--gray:#666;
+--light:#f7f7f7;
+--white:#ffffff;
+--gradient:linear-gradient(135deg,#ff2d75,#7b1fa2);
+--shadow:0 10px 40px rgba(0,0,0,0.08);
 }
 
 body{
-background:#f4f4f4;
+font-family:'Montserrat',sans-serif;
+background:#fafafa;
 color:#222;
+overflow-x:hidden;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#eee;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#ff2d75,#7b1fa2);
+border-radius:30px;
 }
 
 /* HEADER */
 
 header{
 width:100%;
-background:white;
-position:sticky;
+position:fixed;
 top:0;
-z-index:1000;
-border-bottom:1px solid #ececec;
+left:0;
+z-index:999;
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(0,0,0,0.05);
+transition:0.4s;
 }
 
 .header-container{
-max-width:1400px;
+max-width:1450px;
 margin:auto;
-padding:22px 50px;
+padding:18px 60px;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
 }
 
-.logo-center{
+.logo{
 display:flex;
 align-items:center;
-gap:18px;
+gap:15px;
 }
 
-.logo-center img{
-width:95px;
+.logo img{
+width:75px;
+filter:drop-shadow(0 5px 15px rgba(0,0,0,0.1));
 }
 
 .logo-text h1{
-font-size:42px;
-font-weight:700;
-color:#111;
-line-height:1;
+font-size:38px;
+font-weight:800;
+background:var(--gradient);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .logo-text p{
-font-size:13px;
+font-size:12px;
 letter-spacing:3px;
 color:#777;
-margin-top:6px;
+margin-top:4px;
 }
 
-.header-right{
+.nav-menu{
+display:flex;
+gap:35px;
+}
+
+.nav-menu a{
+text-decoration:none;
+color:#333;
+font-size:14px;
+font-weight:600;
+position:relative;
+transition:0.3s;
+}
+
+.nav-menu a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-8px;
+width:0%;
+height:2px;
+background:var(--gradient);
+transition:0.3s;
+}
+
+.nav-menu a:hover::after{
+width:100%;
+}
+
+.nav-menu a:hover{
+color:#000;
+}
+
+.header-actions{
 display:flex;
 align-items:center;
-gap:18px;
+gap:15px;
 }
 
 .search-box{
+width:300px;
+height:52px;
+background:#f3f3f3;
+border-radius:60px;
 display:flex;
 align-items:center;
-background:#f8f8f8;
-border:1px solid #ddd;
-border-radius:60px;
-overflow:hidden;
-width:380px;
-height:52px;
+padding:0 20px;
 }
 
 .search-box input{
-flex:1;
-height:100%;
+width:100%;
 border:none;
 background:none;
-padding:0 22px;
-font-size:14px;
 outline:none;
+font-size:14px;
 }
 
-.search-box button{
-width:60px;
-height:100%;
-border:none;
-background:#111;
-color:white;
-font-size:18px;
-cursor:pointer;
+.search-box i{
+color:#777;
 }
 
 .login-btn{
@@ -108,196 +170,231 @@ height:52px;
 padding:0 28px;
 border:none;
 border-radius:60px;
-background:#111;
+background:var(--gradient);
 color:white;
-font-weight:600;
-font-size:14px;
+font-weight:700;
 cursor:pointer;
-transition:0.3s;
+font-size:14px;
+transition:0.4s;
+box-shadow:0 10px 20px rgba(216,27,96,0.25);
 }
 
 .login-btn:hover{
-background:#333;
-}
-
-/* MENU */
-
-.menu{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:40px;
-height:70px;
-background:white;
-border-top:1px solid #f1f1f1;
-}
-
-.menu a{
-text-decoration:none;
-font-size:15px;
-font-weight:500;
-color:#444;
-position:relative;
-transition:0.3s;
-}
-
-.menu a:hover{
-color:#000;
-}
-
-.menu a::after{
-content:'';
-position:absolute;
-left:0;
-bottom:-8px;
-width:0%;
-height:2px;
-background:#111;
-transition:0.3s;
-}
-
-.menu a:hover::after{
-width:100%;
+transform:translateY(-3px);
 }
 
 /* HERO */
 
 .hero{
-height:85vh;
-background:
-linear-gradient(rgba(0,0,0,0.45),
-rgba(0,0,0,0.45)),
-url('https://images.unsplash.com/photo-1496747611176-843222e1e57c');
-
-background-size:cover;
-background-position:center;
+width:100%;
+min-height:100vh;
 display:flex;
 align-items:center;
-padding:0 80px;
+justify-content:space-between;
+padding:170px 8%;
+background:
+linear-gradient(rgba(255,255,255,0.7),
+rgba(255,255,255,0.7)),
+url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:linear-gradient(#ff2d7540,#7b1fa240);
+border-radius:50%;
+right:-200px;
+top:-200px;
+filter:blur(40px);
 }
 
 .hero-content{
-max-width:600px;
-color:white;
+max-width:650px;
+z-index:2;
+animation:fadeUp 1s ease;
 }
 
 .hero-content span{
-font-size:14px;
-letter-spacing:3px;
-text-transform:uppercase;
+display:inline-block;
+padding:10px 18px;
+background:#ffffffc5;
+backdrop-filter:blur(10px);
+border-radius:40px;
+font-size:13px;
+font-weight:700;
+letter-spacing:2px;
+margin-bottom:25px;
+color:#444;
 }
 
 .hero-content h1{
-font-size:68px;
-line-height:1.1;
-margin:18px 0;
-font-weight:700;
+font-size:78px;
+line-height:1.05;
+font-weight:800;
+margin-bottom:25px;
+color:#111;
 }
 
 .hero-content p{
-font-size:18px;
-line-height:1.7;
-color:#e8e8e8;
-margin-bottom:30px;
+font-size:20px;
+line-height:1.8;
+color:#555;
+margin-bottom:40px;
 }
 
 .hero-buttons{
 display:flex;
-gap:15px;
+gap:18px;
 }
 
 .hero-buttons button{
-padding:15px 28px;
+height:60px;
+padding:0 35px;
 border:none;
+border-radius:60px;
+font-size:15px;
+font-weight:700;
 cursor:pointer;
-font-weight:600;
-border-radius:50px;
-transition:0.3s;
+transition:0.4s;
 }
 
 .shop-btn{
-background:white;
-color:#111;
+background:var(--gradient);
+color:white;
+box-shadow:0 12px 25px rgba(216,27,96,0.25);
 }
 
 .shop-btn:hover{
-background:#ddd;
+transform:translateY(-5px);
 }
 
 .explore-btn{
-background:transparent;
-color:white;
-border:1px solid white !important;
+background:white;
+color:#111;
+border:1px solid #ddd;
 }
 
 .explore-btn:hover{
-background:white;
-color:#111;
+background:#111;
+color:white;
 }
 
-/* SECTION TITLE */
+/* FLOATING CARD */
+
+.hero-fashion{
+position:relative;
+z-index:2;
+}
+
+.hero-fashion img{
+width:620px;
+border-radius:35px;
+box-shadow:0 20px 60px rgba(0,0,0,0.15);
+animation:float 4s ease-in-out infinite;
+}
+
+/* SECTION */
+
+.section{
+padding:110px 7%;
+}
 
 .section-title{
-padding:70px 60px 30px;
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:50px;
 }
 
 .section-title h2{
-font-size:38px;
-margin-bottom:10px;
+font-size:52px;
+font-weight:800;
 }
 
 .section-title p{
 color:#777;
+margin-top:10px;
+font-size:16px;
 }
 
 /* GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-padding:0 60px 70px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
 }
 
 /* CARD */
 
 .card{
 background:white;
-border-radius:20px;
+border-radius:28px;
 overflow:hidden;
-transition:0.4s;
+box-shadow:var(--shadow);
+transition:0.5s;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transform:translateY(-10px);
 }
 
-.card img{
+.card-img{
+height:420px;
+overflow:hidden;
+position:relative;
+}
+
+.card-img img{
 width:100%;
-height:360px;
+height:100%;
 object-fit:cover;
+transition:0.6s;
+}
+
+.card:hover img{
+transform:scale(1.08);
+}
+
+.tag{
+position:absolute;
+top:18px;
+left:18px;
+background:var(--gradient);
+color:white;
+padding:8px 16px;
+border-radius:30px;
+font-size:12px;
+font-weight:700;
+z-index:5;
 }
 
 .card-content{
-padding:22px;
+padding:28px;
 }
 
 .card-content h3{
-font-size:24px;
+font-size:28px;
 margin-bottom:8px;
 }
 
 .store{
 font-size:13px;
 color:#888;
-margin-bottom:15px;
+margin-bottom:18px;
 }
 
 .price{
-font-size:26px;
-font-weight:700;
-margin-bottom:15px;
+font-size:30px;
+font-weight:800;
+margin-bottom:18px;
 }
 
 .card-footer{
@@ -308,65 +405,126 @@ align-items:center;
 
 .size{
 font-size:14px;
-color:#666;
+color:#777;
 }
 
 .buy-btn{
+padding:12px 22px;
 border:none;
-background:#111;
-color:white;
-padding:10px 18px;
 border-radius:50px;
+background:var(--gradient);
+color:white;
+font-weight:700;
 cursor:pointer;
 transition:0.3s;
 }
 
 .buy-btn:hover{
-background:#333;
+transform:scale(1.05);
+}
+
+/* PARIS SECTION */
+
+.paris{
+background:#111;
+color:white;
+border-radius:40px;
+padding:80px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+overflow:hidden;
+position:relative;
+}
+
+.paris::before{
+content:'PARIS';
+position:absolute;
+right:-50px;
+bottom:-60px;
+font-size:220px;
+font-weight:800;
+color:rgba(255,255,255,0.03);
+}
+
+.paris-text{
+max-width:550px;
+z-index:2;
+}
+
+.paris-text span{
+color:#ff77a8;
+font-weight:700;
+letter-spacing:3px;
+font-size:13px;
+}
+
+.paris-text h2{
+font-size:58px;
+margin:20px 0;
+line-height:1.1;
+}
+
+.paris-text p{
+color:#ccc;
+line-height:1.9;
+font-size:17px;
+}
+
+.paris img{
+width:520px;
+border-radius:30px;
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
 }
 
 /* NEWSLETTER */
 
 .newsletter{
-background:#111;
-color:white;
-padding:80px 60px;
+padding:120px 7%;
 text-align:center;
+background:linear-gradient(135deg,#ffffff,#f6f0ff);
 }
 
 .newsletter h2{
-font-size:42px;
-margin-bottom:15px;
+font-size:60px;
+margin-bottom:20px;
 }
 
 .newsletter p{
-color:#ccc;
-margin-bottom:30px;
-}
-
-.newsletter-box{
-display:flex;
-justify-content:center;
-max-width:600px;
+max-width:700px;
 margin:auto;
-overflow:hidden;
-border-radius:50px;
+color:#666;
+line-height:1.8;
+margin-bottom:35px;
+}
+
+.news-box{
+max-width:700px;
+height:75px;
 background:white;
+margin:auto;
+border-radius:80px;
+display:flex;
+overflow:hidden;
+box-shadow:var(--shadow);
 }
 
-.newsletter-box input{
+.news-box input{
 flex:1;
-padding:18px;
 border:none;
-outline:none;
+padding:0 30px;
 font-size:15px;
+outline:none;
 }
 
-.newsletter-box button{
+.news-box button{
+width:220px;
 border:none;
-background:#111;
+background:var(--gradient);
 color:white;
-padding:18px 30px;
+font-weight:700;
+font-size:15px;
 cursor:pointer;
 }
 
@@ -374,58 +532,187 @@ cursor:pointer;
 
 footer{
 background:#0a0a0a;
-color:#aaa;
-padding:30px;
+padding:80px 7% 40px;
+color:white;
+}
+
+.footer-top{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:50px;
+margin-bottom:50px;
+}
+
+.footer-logo h2{
+font-size:42px;
+background:var(--gradient);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:15px;
+}
+
+.footer-logo p{
+color:#999;
+line-height:1.8;
+}
+
+.footer-links h3{
+margin-bottom:20px;
+font-size:18px;
+}
+
+.footer-links a{
+display:block;
+margin-bottom:12px;
+color:#999;
+text-decoration:none;
+transition:0.3s;
+}
+
+.footer-links a:hover{
+color:white;
+padding-left:5px;
+}
+
+.socials{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+.socials i{
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#1c1c1c;
+border-radius:50%;
+cursor:pointer;
+transition:0.3s;
+}
+
+.socials i:hover{
+background:var(--gradient);
+transform:translateY(-4px);
+}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,0.08);
+padding-top:30px;
 text-align:center;
+color:#777;
 font-size:14px;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-15px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* RESPONSIVO */
 
+@media(max-width:1200px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:70px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-fashion img{
+width:100%;
+max-width:550px;
+}
+
+.paris{
+flex-direction:column;
+text-align:center;
+}
+
+.footer-top{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
 @media(max-width:900px){
 
 .header-container{
+padding:20px;
 flex-direction:column;
-gap:20px;
-padding:25px;
+gap:25px;
 }
 
-.menu{
+.nav-menu{
 flex-wrap:wrap;
-height:auto;
-padding:20px;
+justify-content:center;
 gap:20px;
 }
 
 .hero{
-padding:30px;
-height:auto;
-padding-top:120px;
-padding-bottom:120px;
+padding-top:220px;
 }
 
 .hero-content h1{
-font-size:42px;
-}
-
-.grid{
-padding:0 20px 50px;
+font-size:52px;
 }
 
 .section-title{
-padding:50px 20px 30px;
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
 }
 
-.newsletter{
-padding:60px 20px;
+.section-title h2{
+font-size:40px;
 }
 
-.search-box{
+.newsletter h2{
+font-size:42px;
+}
+
+.news-box{
+height:auto;
+flex-direction:column;
+border-radius:25px;
+}
+
+.news-box input{
+height:65px;
+}
+
+.news-box button{
 width:100%;
+height:65px;
 }
 
-.search-box input{
-width:100%;
+.footer-top{
+grid-template-columns:1fr;
 }
 
 }
@@ -439,27 +726,33 @@ width:100%;
 
 <div class="header-container">
 
-<div class="logo-center">
+<div class="logo">
 
-<img src="logo.png" alt="ConectaModa">
+<img src="logo.png">
 
 <div class="logo-text">
 <h1>ConectaModa</h1>
-<p>MODA • ESTILO • TENDÊNCIA</p>
+<p>PARISIAN FASHION STYLE</p>
 </div>
 
 </div>
 
-<div class="header-right">
+<nav class="nav-menu">
+
+<a href="#">Lançamentos</a>
+<a href="#">Feminino</a>
+<a href="#">Masculino</a>
+<a href="#">Paris Collection</a>
+<a href="#">Tendências</a>
+<a href="#">Acessórios</a>
+
+</nav>
+
+<div class="header-actions">
 
 <div class="search-box">
-
 <input type="text" placeholder="Buscar produtos...">
-
-<button>
-⌕
-</button>
-
+<i class="fa-solid fa-magnifying-glass"></i>
 </div>
 
 <button class="login-btn">
@@ -470,29 +763,16 @@ Entrar
 
 </div>
 
-<nav class="menu">
-
-<a href="#">Lançamentos</a>
-<a href="#">Vestidos</a>
-<a href="#">Fitness</a>
-<a href="#">Conjuntos</a>
-<a href="#">Masculino</a>
-<a href="#">Feminino</a>
-<a href="#">Acessórios</a>
-<a href="#">Favoritos</a>
-
-</nav>
-
 </header>
 
 <section class="hero">
 
 <div class="hero-content">
 
-<span>NOVA COLEÇÃO 2026</span>
+<span>NOVA COLEÇÃO • PARIS 2026</span>
 
 <h1>
-Moda elegante para quem quer se destacar
+Moda sofisticada com essência parisiense
 </h1>
 
 <p>
@@ -506,41 +786,56 @@ Comprar Agora
 </button>
 
 <button class="explore-btn">
-Explorar
+Explorar Coleção
 </button>
 
 </div>
 
 </div>
 
+<div class="hero-fashion">
+
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
 </section>
 
-<section class="section-title">
+<section class="section">
 
+<div class="section-title">
+
+<div>
 <h2>Destaques da Semana</h2>
+<p>As peças mais elegantes da ConectaModa.</p>
+</div>
 
-<p>
-As peças mais procuradas da plataforma.
-</p>
+</div>
 
-</section>
-
-<section class="grid">
+<div class="grid">
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+<div class="card-img">
+
+<div class="tag">
+NEW
+</div>
+
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
+
+</div>
 
 <div class="card-content">
 
-<h3>Blazer Premium</h3>
+<h3>Paris Blazer</h3>
 
 <p class="store">
-Bella Moda
+Conecta Premium
 </p>
 
 <div class="price">
-R$229,90
+R$249,90
 </div>
 
 <div class="card-footer">
@@ -561,14 +856,22 @@ Ver peça
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f">
+<div class="card-img">
+
+<div class="tag">
+TREND
+</div>
+
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
+
+</div>
 
 <div class="card-content">
 
-<h3>Vestido Elegance</h3>
+<h3>Elegant Dress</h3>
 
 <p class="store">
-Lux Fashion
+Paris Fashion
 </p>
 
 <div class="price">
@@ -593,18 +896,26 @@ Ver peça
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
+<div class="card-img">
+
+<div class="tag">
+LUXURY
+</div>
+
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
+
+</div>
 
 <div class="card-content">
 
-<h3>Conjunto Minimal</h3>
+<h3>Minimal Chic</h3>
 
 <p class="store">
-Urban Style
+Urban Paris
 </p>
 
 <div class="price">
-R$149,90
+R$159,90
 </div>
 
 <div class="card-footer">
@@ -618,36 +929,6 @@ Ver peça
 </button>
 
 </div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1495385794356-15371f348c31">
-
-<div class="card-content">
-
-<h3>Fitness Black</h3>
-
-<p class="store">
-Power Fit
-</p>
-
-<div class="price">
-R$119,90
-</div>
-
-<div class="card-footer">
-
-<span class="size">
-P • M • G
-</span>
-
-<button class="buy-btn">
-Ver peça
-</button>
 
 </div>
 
@@ -657,20 +938,46 @@ Ver peça
 
 </section>
 
-<section class="newsletter">
+<section class="section">
 
-<h2>Receba novidades da moda</h2>
+<div class="paris">
+
+<div class="paris-text">
+
+<span>FASHION • PARIS</span>
+
+<h2>
+Inspirado nas ruas mais elegantes de Paris
+</h2>
 
 <p>
-Cadastre seu e-mail para receber tendências, promoções e lançamentos exclusivos.
+Uma coleção criada para transmitir sofisticação, presença e autenticidade. Looks minimalistas, modernos e luxuosos para destacar seu estilo em qualquer ocasião.
 </p>
 
-<div class="newsletter-box">
+</div>
+
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<section class="newsletter">
+
+<h2>
+Entre para o universo ConectaModa
+</h2>
+
+<p>
+Receba tendências exclusivas, novidades da coleção parisiense e promoções especiais diretamente no seu e-mail.
+</p>
+
+<div class="news-box">
 
 <input type="email" placeholder="Digite seu e-mail">
 
 <button>
-Cadastrar
+Cadastrar Agora
 </button>
 
 </div>
@@ -679,9 +986,113 @@ Cadastrar
 
 <footer>
 
+<div class="footer-top">
+
+<div class="footer-logo">
+
+<h2>ConectaModa</h2>
+
+<p>
+Moda premium inspirada no estilo parisiense moderno.
+Elegância, autenticidade e tendência em um só lugar.
+</p>
+
+<div class="socials">
+
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-tiktok"></i>
+<i class="fa-brands fa-pinterest"></i>
+<i class="fa-brands fa-facebook-f"></i>
+
+</div>
+
+</div>
+
+<div class="footer-links">
+
+<h3>Categorias</h3>
+
+<a href="#">Vestidos</a>
+<a href="#">Conjuntos</a>
+<a href="#">Acessórios</a>
+<a href="#">Masculino</a>
+
+</div>
+
+<div class="footer-links">
+
+<h3>Empresa</h3>
+
+<a href="#">Sobre</a>
+<a href="#">Contato</a>
+<a href="#">Política</a>
+<a href="#">Termos</a>
+
+</div>
+
+<div class="footer-links">
+
+<h3>Suporte</h3>
+
+<a href="#">Ajuda</a>
+<a href="#">FAQ</a>
+<a href="#">Entrega</a>
+<a href="#">Pagamentos</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
 © 2026 ConectaModa — Desenvolvido por Hortência Rocha
 
+</div>
+
 </footer>
+
+<script>
+
+/* HEADER EFFECT */
+
+window.addEventListener('scroll',()=>{
+
+const header=document.querySelector('header');
+
+header.classList.toggle('scroll',window.scrollY > 20);
+
+});
+
+/* ANIMAÇÃO */
+
+const cards=document.querySelectorAll('.card');
+
+window.addEventListener('scroll',()=>{
+
+cards.forEach(card=>{
+
+const top=card.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 100){
+
+card.style.opacity='1';
+card.style.transform='translateY(0)';
+
+}
+
+});
+
+});
+
+cards.forEach(card=>{
+
+card.style.opacity='0';
+card.style.transform='translateY(50px)';
+card.style.transition='0.8s';
+
+});
+
+</script>
 
 </body>
 </html>
