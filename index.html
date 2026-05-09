@@ -15,6 +15,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Outfit',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -42,6 +43,7 @@ background:#f6f3ef;
 position:sticky;
 top:0;
 z-index:1000;
+border-bottom:1px solid #e7e2dc;
 }
 
 .header{
@@ -54,6 +56,7 @@ align-items:center;
 font-size:32px;
 font-weight:800;
 letter-spacing:-2px;
+cursor:pointer;
 }
 
 nav{
@@ -98,6 +101,12 @@ background:white;
 border:none;
 font-size:18px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.icon:hover{
+background:black;
+color:white;
 }
 
 /* HERO */
@@ -152,6 +161,7 @@ border-radius:50px;
 font-size:14px;
 font-weight:700;
 cursor:pointer;
+transition:0.3s;
 }
 
 .dark{
@@ -159,12 +169,12 @@ background:black;
 color:white;
 }
 
-.light{
-background:white;
+.dark:hover{
+transform:translateY(-3px);
 }
 
-.hero-image{
-position:relative;
+.light{
+background:white;
 }
 
 .hero-image img{
@@ -173,7 +183,7 @@ object-fit:cover;
 border-radius:35px;
 }
 
-/* TOP BAR */
+/* CATEGORIAS */
 
 .top-categories{
 padding:10px 0 80px;
@@ -195,6 +205,12 @@ min-width:180px;
 background:white;
 border-radius:25px;
 padding:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.top-item:hover{
+transform:translateY(-6px);
 }
 
 .top-item img{
@@ -264,6 +280,7 @@ background:white;
 border-radius:32px;
 overflow:hidden;
 transition:0.4s;
+position:relative;
 }
 
 .card:hover{
@@ -308,6 +325,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:18px;
+cursor:pointer;
 }
 
 .card-content{
@@ -353,50 +371,120 @@ background:black;
 color:white;
 font-size:20px;
 cursor:pointer;
+transition:0.3s;
 }
 
-/* BIG BANNER */
+.buy:hover{
+background:#6d4aff;
+}
 
-.big-banner{
-background:#111;
-border-radius:45px;
-padding:80px;
+/* MODAL */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:20px;
+}
+
+.modal-box{
+background:white;
+width:100%;
+max-width:950px;
+border-radius:35px;
+overflow:hidden;
 display:grid;
 grid-template-columns:1fr 1fr;
-align-items:center;
-gap:50px;
-color:white;
+animation:show 0.3s ease;
 }
 
-.big-banner h2{
-font-size:82px;
-line-height:0.9;
-font-weight:800;
-letter-spacing:-4px;
+@keyframes show{
+from{
+transform:scale(0.9);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.modal-box img{
+height:100%;
+object-fit:cover;
+}
+
+.modal-info{
+padding:45px;
+position:relative;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:20px;
+width:42px;
+height:42px;
+border:none;
+border-radius:50%;
+background:#f2f2f2;
+cursor:pointer;
+font-size:18px;
+}
+
+.modal-info small{
+font-size:12px;
+letter-spacing:3px;
+font-weight:700;
+color:#777;
+}
+
+.modal-info h2{
+font-size:52px;
+line-height:1;
+margin:20px 0;
+}
+
+.modal-info p{
+font-size:17px;
+line-height:1.8;
+color:#666;
 margin-bottom:25px;
 }
 
-.big-banner p{
-font-size:18px;
-line-height:1.8;
-color:#bbb;
-margin-bottom:35px;
+.modal-price{
+font-size:42px;
+font-weight:800;
+margin-bottom:25px;
 }
 
-.big-banner button{
-height:60px;
-padding:0 35px;
+.modal-buttons{
+display:flex;
+gap:15px;
+}
+
+.modal-buttons button{
+height:58px;
+padding:0 30px;
 border:none;
 border-radius:50px;
-background:white;
+font-size:14px;
 font-weight:700;
 cursor:pointer;
 }
 
-.big-banner img{
-height:650px;
-object-fit:cover;
-border-radius:35px;
+.whats{
+background:#25d366;
+color:white;
+}
+
+.save{
+background:black;
+color:white;
 }
 
 /* FOOTER */
@@ -445,7 +533,7 @@ grid-template-columns:1fr;
 grid-template-columns:repeat(2,1fr);
 }
 
-.big-banner{
+.modal-box{
 grid-template-columns:1fr;
 }
 
@@ -489,16 +577,8 @@ gap:20px;
 font-size:46px;
 }
 
-.big-banner{
-padding:40px 25px;
-}
-
-.big-banner h2{
-font-size:48px;
-}
-
-.big-banner img{
-height:400px;
+.modal-info h2{
+font-size:38px;
 }
 
 }
@@ -519,12 +599,10 @@ ConectaModa
 </div>
 
 <nav>
-<a href="#">Início</a>
-<a href="#">Vestidos</a>
-<a href="#">Conjuntos</a>
-<a href="#">Fitness</a>
-<a href="#">Novidades</a>
-<a href="#">Lojas</a>
+<a href="#produtos">Produtos</a>
+<a href="#categorias">Categorias</a>
+<a href="#novidades">Novidades</a>
+<a href="#lojas">Lojas</a>
 </nav>
 
 <div class="right">
@@ -551,19 +629,19 @@ ConectaModa
 
 <div class="hero-text">
 
-<small>NOVA TEMPORADA 2026</small>
+<small>NOVA TEMPORADA</small>
 
 <h1>
-Moda real para mulheres reais
+Moda feita para impressionar
 </h1>
 
 <p>
-Explore tendências, descubra lojas da cidade e encontre peças incríveis em um catálogo online moderno, elegante e apaixonante.
+Explore roupas incríveis das melhores lojas da cidade em um catálogo moderno, elegante e totalmente interativo.
 </p>
 
 <div class="hero-buttons">
 
-<button class="dark">
+<button class="dark" onclick="scrollToProducts()">
 Explorar agora
 </button>
 
@@ -587,46 +665,28 @@ Ver lançamentos
 
 </section>
 
-<section class="top-categories">
+<section class="top-categories" id="categorias">
 
 <div class="container">
 
 <div class="top-scroll">
 
-<div class="top-item">
+<div class="top-item" onclick="alert('Categoria Vestidos')">
 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80">
 <h3>Vestidos</h3>
 <p>Elegância feminina</p>
 </div>
 
-<div class="top-item">
+<div class="top-item" onclick="alert('Categoria Blazers')">
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80">
 <h3>Blazers</h3>
 <p>Looks sofisticados</p>
 </div>
 
-<div class="top-item">
+<div class="top-item" onclick="alert('Categoria Fitness')">
 <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=900&q=80">
 <h3>Fitness</h3>
 <p>Moda esportiva</p>
-</div>
-
-<div class="top-item">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80">
-<h3>Casual</h3>
-<p>Tendências urbanas</p>
-</div>
-
-<div class="top-item">
-<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80">
-<h3>Conjuntos</h3>
-<p>Looks completos</p>
-</div>
-
-<div class="top-item">
-<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80">
-<h3>Premium</h3>
-<p>Peças exclusivas</p>
 </div>
 
 </div>
@@ -635,7 +695,7 @@ Ver lançamentos
 
 </section>
 
-<section class="section">
+<section class="section" id="produtos">
 
 <div class="container">
 
@@ -667,7 +727,9 @@ Ver tudo
 
 <div class="tag">NEW</div>
 
-<div class="like">♡</div>
+<div class="like" onclick="saveItem()">
+♡
+</div>
 
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80">
 
@@ -691,7 +753,12 @@ R$229
 P • M • G
 </div>
 
-<button class="buy">
+<button class="buy" onclick="openModal(
+'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+'Blazer Nude',
+'Bella Moda',
+'R$229'
+)">
 +
 </button>
 
@@ -707,7 +774,9 @@ P • M • G
 
 <div class="tag">TREND</div>
 
-<div class="like">♡</div>
+<div class="like" onclick="saveItem()">
+♡
+</div>
 
 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80">
 
@@ -731,87 +800,12 @@ R$189
 P • M • G
 </div>
 
-<button class="buy">
-+
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-img">
-
-<div class="tag">FIT</div>
-
-<div class="like">♡</div>
-
-<img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=900&q=80">
-
-</div>
-
-<div class="card-content">
-
-<div class="store">
-POWER FIT
-</div>
-
-<h3>Conjunto Energy</h3>
-
-<div class="price">
-R$139
-</div>
-
-<div class="bottom">
-
-<div class="size">
-P • M • G
-</div>
-
-<button class="buy">
-+
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-img">
-
-<div class="tag">POPULAR</div>
-
-<div class="like">♡</div>
-
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80">
-
-</div>
-
-<div class="card-content">
-
-<div class="store">
-URBAN STYLE
-</div>
-
-<h3>Look Casual</h3>
-
-<div class="price">
-R$199
-</div>
-
-<div class="bottom">
-
-<div class="size">
-P • M • G • GG
-</div>
-
-<button class="buy">
+<button class="buy" onclick="openModal(
+'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+'Vestido Glow',
+'Lux Fashion',
+'R$189'
+)">
 +
 </button>
 
@@ -827,35 +821,48 @@ P • M • G • GG
 
 </section>
 
-<section class="section">
+<!-- MODAL -->
 
-<div class="container">
+<div class="modal" id="modal">
 
-<div class="big-banner">
+<div class="modal-box">
 
-<div>
+<img id="modalImg">
 
-<h2>
-Seu estilo começa aqui
-</h2>
+<div class="modal-info">
+
+<button class="close" onclick="closeModal()">
+✕
+</button>
+
+<small id="modalStore"></small>
+
+<h2 id="modalTitle"></h2>
 
 <p>
-Acompanhe tendências, novidades e promoções das melhores lojas da cidade em um só lugar.
+Peça moderna e elegante disponível no catálogo ConectaModa.
+Entre em contato com a loja para comprar.
 </p>
 
-<button>
-Explorar catálogo
+<div class="modal-price" id="modalPrice"></div>
+
+<div class="modal-buttons">
+
+<button class="whats">
+WhatsApp
+</button>
+
+<button class="save" onclick="saveItem()">
+Salvar
 </button>
 
 </div>
 
-<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80">
-
 </div>
 
 </div>
 
-</section>
+</div>
 
 <footer>
 
@@ -880,6 +887,56 @@ Explorar catálogo
 </div>
 
 </footer>
+
+<script>
+
+function openModal(img,title,store,price){
+
+document.getElementById('modal').style.display='flex';
+
+document.getElementById('modalImg').src=img;
+
+document.getElementById('modalTitle').innerText=title;
+
+document.getElementById('modalStore').innerText=store;
+
+document.getElementById('modalPrice').innerText=price;
+
+}
+
+function closeModal(){
+
+document.getElementById('modal').style.display='none';
+
+}
+
+function saveItem(){
+
+alert('Peça salva nos favoritos ❤️');
+
+}
+
+function scrollToProducts(){
+
+document.getElementById('produtos').scrollIntoView({
+behavior:'smooth'
+});
+
+}
+
+window.onclick=function(e){
+
+const modal=document.getElementById('modal');
+
+if(e.target==modal){
+
+modal.style.display='none';
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
